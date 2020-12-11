@@ -51,7 +51,7 @@
 \DeclareOption{german}{\KITthesis@germantrue}
 \DeclareOption{ngerman}{\KITthesis@germantrue}
 
-\DeclareOption{seminar}{\KITthesis@seminartrue}
+%\DeclareOption{seminar}{\KITthesis@seminartrue}
 \DeclareOption{studien}{\KITthesis@studientrue \KITthesis@thesistrue}
 \DeclareOption{bachelor}{\KITthesis@bachelortrue \KITthesis@thesistrue}
 \DeclareOption{master}{\KITthesis@mastertrue \KITthesis@thesistrue}
@@ -251,7 +251,8 @@
 {\includegraphics[height=1.8cm]{Logos/kitlogo_en_cmyk}}
 \hfill
 % Institute/Group logo
-\printinstitutelogo     \ifKITthesis@declaration \else \\ \fi
+%\printinstitutelogo     \ifKITthesis@declaration \else \\ \fi
+\noinstitutelogo
 \printgrouplogo
 
 \begin{textblock}{10}[0,0](3.5,16.8)
@@ -290,11 +291,11 @@
 \ifKITthesis@techreport
   \setkomafont{title}{\Huge\changefont{phv}{m}{n}}
   \setkomafont{subtitle}{\large\changefont{phv}{m}{n}}
-  \setkomafont{author}{\Large\changefont{phv}{m}{n}}
+  \setkomafont{author}{\large\changefont{phv}{m}{n}}
 \else
   \setkomafont{title}{\Huge\changefont{phv}{m}{n}}
   \setkomafont{subtitle}{\large\changefont{phv}{m}{n}}
-  \setkomafont{author}{\huge\changefont{phv}{m}{n}}
+  \setkomafont{author}{\large\changefont{phv}{m}{n}}
 \fi
 
 % TODO: Add this for title??
@@ -303,25 +304,25 @@
 
 \newcommand{\theinstitute}{
   \iflanguage{ngerman}
-   {Institut f\"ur Anthropomatik und Robotik (IAR) -\\ Intelligente Prozessautomation und Robotik (IPR)}
-   {Institute for Anthropomatics and Robotics (IAR) -\\ Intelligent Process Automation and Robotics Lab (IPR)}
+   {Institut f\"ur Prozess­daten­verarbeitung und Elektronik (IPE)}
+   {Institute for Data Processing and Electronics (IPE)}
   }
 \newcommand{\institute}[1]{\renewcommand{\theinstitute}{#1}}
 
 \newcommand{\theKITfaculty}{
   \iflanguage{ngerman}
-   {KIT-Fakult\"at f\"ur Informatik}
-   {KIT Department of Informatics}
+   {KIT-Fakult\"at f\"ur Elektro- und Informationstechnik}
+   {KIT Department of Electrical Engineering and Information Technology}
   }
 \newcommand{\KITfaculty}[1]{\renewcommand{\theKITfaculty}{#1}}
 
 \newcommand{\theinstituteaddress}{
-  Engler-Bunte-Ring 8
+  Building 242 \\ Hermann-von-Helmholtz-Platz 1
   }
 \newcommand{\instituteaddress}[1]{\renewcommand{\theinstituteaddress}{#1}}
 
 \newcommand{\theinstitutecity}{
-  76131 Karlsruhe
+  76344 Eggenstein-Leopoldshafen
   }
 \newcommand{\institutecity}[1]{\renewcommand{\theinstitutecity}{#1}}
 
@@ -370,7 +371,7 @@
 \fi
 \ifKITthesis@thesis
 %   \newcommand{\studyprogram}[1]{\subtitle{\vspace*{1.5cm} \iflanguage{ngerman}{\thesistype\\ im Studiengang #1\\von}{\thesistype\\ in #1\\of}}
-  \newcommand{\studyprogram}[1]{\subtitle{\vspace*{1cm} \iflanguage{ngerman}{\thesistype\\ ~\\von}{\thesistype\\ ~\\of}}
+  \newcommand{\studyprogram}[1]{\subtitle{\vspace*{0.2cm} \iflanguage{ngerman}{\thesistype\\ ~\\von}{\thesistype\\ ~\\of}}
   \renewcommand{\thethesistype}{#1}}
 \fi
 \ifKITthesis@techreport
@@ -418,7 +419,7 @@
 	\ifKITthesis@phd
 	\else
 	  \ifthenelse{\equal{\theadvisortwo}{}}{
-	    \iflanguage{ngerman}{Betreuender Mitarbeiter}{Advisor}: & \hfill & \theadvisorone \\
+	 \\
 	  }{
 	    \iflanguage{ngerman}{Erster betreuender Mitarbeiter}{First advisor}: & \hfill & \theadvisorone \\
 	    { }\iflanguage{ngerman}{Zweiter betreuender Mitarbeiter}{Second advisor}: & \hfill & \theadvisortwo \\
@@ -508,35 +509,35 @@
   \iflanguage{ngerman}{
     % include German and English abstracts
     \renewcommand{\abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname} ##1}}
-    \renewcommand{\Abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname}\addcontentsline{toc}{chapter}{\abstractname} {\Large\changefont{phv}{b}{n}\centering{\thetitle}\\\vspace{0.7cm}} ##1}}
+    \renewcommand{\Abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname}\addcontentsline{toc}{chapter}{\abstractname} {\Large\changefont{phv}{b}{n}} ##1}}
     \include{Content/0-Abstract_DE}
     \theAbstract
     \vfill
-    \textbf{Stichw\"orter:} \emph{\thekeywords}
+    %\textbf{Stichw\"orter:} \emph{\thekeywords}
 
     \begin{otherlanguage}{english}
       \renewcommand{\abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname} ##1}}
-      \renewcommand{\Abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname}\addcontentsline{toc}{chapter}{\abstractname} {\Large\changefont{phv}{b}{n}\centering{\thetitleotherlanguage}\\\vspace{0.7cm}} ##1}}
+      \renewcommand{\Abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname}\addcontentsline{toc}{chapter}{\abstractname} {\Large\changefont{phv}{b}{n}} ##1}}
       \include{Content/0-Abstract_EN}
       \theAbstract
       \vfill % works also: %\vskip 0.7cm
-      \textbf{Keywords:} \emph{\thekeywordsotherlanguge}
+      %\textbf{Keywords:} \emph{\thekeywordsotherlanguge}
     \end{otherlanguage}
   }{
     % include English and German abstracts
     \renewcommand{\abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname} ##1}}
-    \renewcommand{\Abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname}\addcontentsline{toc}{chapter}{\abstractname} {\Large\changefont{phv}{b}{n}\centering{\thetitle}\\\vspace{0.7cm}} ##1}}
+    \renewcommand{\Abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname}\addcontentsline{toc}{chapter}{\abstractname} {\Large\changefont{phv}{b}{n}} ##1}}
     \include{Content/0-Abstract_EN}
       \theAbstract
       \vfill
-      \textbf{Keywords:} \emph{\thekeywords}
+      %\textbf{Keywords:} \emph{\thekeywords}
     \begin{otherlanguage}{ngerman}
       \renewcommand{\abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname} ##1}}
-      \renewcommand{\Abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname}\addcontentsline{toc}{chapter}{\abstractname} {\Large\changefont{phv}{b}{n}\centering{\thetitleotherlanguage}\\\vspace{0.7cm}} ##1}}
+      \renewcommand{\Abstract}[1]{\renewcommand{\theAbstract}{\chapter*{\abstractname}\addcontentsline{toc}{chapter}{\abstractname} {\Large\changefont{phv}{b}{n}} ##1}}
       \include{Content/0-Abstract_DE}
       \theAbstract
       \vfill
-      \textbf{Stichw\"orter:} \emph{\thekeywordsotherlanguge}
+      %\textbf{Stichw\"orter:} \emph{\thekeywordsotherlanguge}
     \end{otherlanguage}
   }
   }
